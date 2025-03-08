@@ -52,9 +52,10 @@ class User(models.Model):
     ]
 
     username = models.CharField(max_length=20, unique=True)
+    pasword = models
     name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)  # Fixed typo 'mac_length'
     bio = models.CharField(max_length=200)
-    age = models.IntegerField(MinValueValidator(18), MaxValueValidator(100))  # Changed to IntegerField as age is typically a number
+    age = models.IntegerField(validators=[MinValueValidator(18), MaxValueValidator(100)])  # Changed to IntegerField as age is typically a number
     email = models.EmailField(validators=[validate_email_domain], unique=True)  # Added brackets to make it a list
     campus = models.CharField(max_length=10, choices=CAMPUS_CHOICES)  # Changed to CharField, not DateField
